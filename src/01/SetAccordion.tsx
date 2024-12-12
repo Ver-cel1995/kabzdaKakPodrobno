@@ -8,18 +8,33 @@ export type itemType = {
 type AccordionType = {
     titleValue: string
     collapsed?: boolean
-    onChange: () => void
     items: itemType[]
     onClick: (value: any) => void
 }
 
+type SwitchAccordionType = {
+    type: "TOGGLE-COLLAPSED"
+
+}
+
+type accordionType = SwitchAccordionType
+
+const reducer = (state: boolean, action: accordionType): boolean => {
+    switch (action.type) {
+        case "TOGGLE-COLLAPSED": {
+            return !state
+        }
+    }
+}
+
 function Accordion(props: AccordionType) {
 
+    const [collapsed, dispatch] = useReducer(reducer, false)
 
     return (
         <div>
-            <div ><AccordionTitle title={props.titleValue} onChange={props.onChange}/></div>
-            {props.collapsed
+            <div ><AccordionTitle title={props.titleValue} onChange={() => dispatch({type: "TOGGLE-COLLAPSED"}) }/></div>
+            {collapsed
                 ? <div><AccordionMenu items={props.items} onClick={props.onClick}/></div>
                 : false
             }
