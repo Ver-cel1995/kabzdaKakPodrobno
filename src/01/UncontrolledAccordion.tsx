@@ -19,13 +19,26 @@ type AccordionType = {
 function Accordion(props: AccordionType) {
     const [state, dispatch] = useReducer(reducer, {collapsed: false})
 
+import React, {useState} from 'react';
 
+type AccordionType = {
+    titleValue: string
+    collapsed?: boolean
+    onChange: () => void
+}
+
+function Accordion(props: AccordionType) {
     return (
         <div>
+
             <div><AccordionTitle title={props.titleValue + `: Uncontrolled`}
                                  onChange={() => dispatch({type: "TOGGLE-COLLAPSED"})}/></div>
             {state.collapsed
                 ? <div><AccordionMenu items={items}/></div>
+
+            <div ><AccordionTitle title={props.titleValue} onChange={props.onChange}/></div>
+            {props.collapsed
+                ? <div><AccordionMenu/></div>
                 : false
             }
         </div>
@@ -56,6 +69,15 @@ function AccordionMenu(props: AccordionMenuType) {
             {props.items.map((el, index) => {
                 return <li key={index}>{el.title}</li>
             })}
+
+}
+
+function AccordionMenu(props: AccordionMenuType) {
+    return (
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
         </ul>
     )
 }

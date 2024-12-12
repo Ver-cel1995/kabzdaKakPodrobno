@@ -33,9 +33,14 @@ export const GetValueUncontrolledInputByButtonPress = () => {
         <button onClick={ (e) => {
             const el = inputRef.current as HTMLInputElement;
 
+<<<<<<< HEAD
             setValue(el.value);} } >
             save
         </button> - actual value: {value}
+=======
+            setValue(el.value);
+        } }>save</button> - actual value: {value}
+>>>>>>> 9a02213262917c2c0cd3de4ae52daf24a4a475f1
     </>
     )
 }
@@ -43,6 +48,7 @@ export const ControlledInput = () => {
     const [parentValue, setParentValue] = useState("");
 
     return (
+<<<<<<< HEAD
         <input value={parentValue}
                onChange={ (e) => setParentValue(e.currentTarget.value) }/>
     )
@@ -54,10 +60,19 @@ export const ControlledCheckbox = () => {
         <input type={'checkbox'}
                checked={parentValue}
                onChange={ (e) => setParentValue(e.currentTarget.checked) }/>
+=======
+        <input value={parentValue} onChange={action('123443fdfs')}/>
+    )
+}
+export const ControlledCheckbox = () => {
+    return (
+        <input type='checkbox'/>
+>>>>>>> 9a02213262917c2c0cd3de4ae52daf24a4a475f1
     )
 }
 
 export const ControlledSelect = () => {
+<<<<<<< HEAD
     const [parentValue, setParentValue] = useState<string | undefined>('1');
 
     return (
@@ -67,5 +82,9 @@ export const ControlledSelect = () => {
             <option value="1">Piter</option>
             <option value="3">Krasnodar</option>
         </select>
+=======
+    return (
+        <input type='select'/>
+>>>>>>> 9a02213262917c2c0cd3de4ae52daf24a4a475f1
     )
 }
